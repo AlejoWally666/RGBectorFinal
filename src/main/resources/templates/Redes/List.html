@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: frgHead"></head>
+
+<body>
+	<div id="wrapper">
+	<nav th:replace="layout :: frgNav"></nav>
+
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<div id="content">
+
+				<!-- Begin Page Content -->
+				<div class="container-fluid">
+
+					<!-- Page Heading -->
+					<div
+						class="d-sm-flex align-items-center justify-content-between mb-4">
+						<h1 th:text="${title}" class="h3 mb-0 text-gray-800"></h1>
+					</div>
+
+					<hr />
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Url Red</th>
+								<th><a class="btn btn-sm btn-success"
+									th:href="@{/redes/create}">Nuevo</a></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="a : ${redes}">
+								<td th:text="${a.idred}"></td>
+								<td th:text="${a.urlRed}"></td>
+								<td><a class="btn btn-sm btn-warning"
+									th:href="@{/redes/update/} + ${(a.idred)}">&nbsp;Actualizar</a>
+									<a class="btn btn-sm btn-info"
+									th:href="@{/redes/retrieve/} + ${(a.idred)}">&nbsp;Consultar</a></td>
+							</tr>
+						</tbody>
+					</table>
+
+
+				</div>
+				<!-- /.container-fluid -->
+
+			</div>
+
+			<footer th:replace="layout :: frgFooter"></footer>
+
+		</div>
+
+	</div>
+
+</body>
+</html>
+
+

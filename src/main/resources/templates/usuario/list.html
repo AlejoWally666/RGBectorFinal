@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: frgHead"></head>
+
+<body>
+	<div id="wrapper">
+	<nav th:replace="layout :: frgNav"></nav>
+
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<div id="content">
+
+				<!-- Begin Page Content -->
+				<div class="container-fluid">
+
+					<!-- Page Heading -->
+					<div
+						class="d-sm-flex align-items-center justify-content-between mb-4">
+						<h1 th:text="${title}" class="h3 mb-0 text-gray-800"></h1>
+					</div>
+
+					<hr />
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th>Nick</th>
+								<th>Correo</th>
+								<th>Telefono</th>
+								<th>Estado</th>
+								
+								<th><a class="btn btn-sm btn-success"
+									th:href="@{/usuario/create}">Nuevo</a></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="a : ${usuarios}">
+								<td th:text="${a.nombres}"></td>
+								<td th:text="${a.nombre}"></td>
+								<td th:text="${a.correo}"></td>
+								<td th:text="${a.telefono}"></td>
+								<td th:text="${a.habilitado}"></td>
+								
+								<td>
+									<a class="btn btn-xs academy-btn btn-3"	th:href="@{/usuario/retrieve/} + ${(a.idusuario)}"><i class="fas fa-eye"></i></a>
+									<a class="btn btn-xs academy-btn btn-2"	th:href="@{/usuario/update/} + ${(a.idusuario)}"><i class="fas fa-user-edit"></i></a>
+									<button th:onclick="|alertDeleteUsuario(${a.idusuario});|" class="btn btn-xs academy-btn btn-4"><i class="fas fa-trash-alt"></i></button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+
+				</div>
+				<!-- /.container-fluid -->
+
+			</div>
+
+			
+
+		</div>
+
+	</div>
+
+	<footer th:replace="layout :: frgFooter"></footer>
+	<div th:replace="layout :: frgScripts"></div>
+	<script th:src="@{/js/usuario/delete-usuario.js}"></script>
+	
+</body>
+</html>
+
+

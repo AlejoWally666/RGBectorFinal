@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: frgHead"></head>
+<body id="page-top">
+
+	<div id="wrapper">
+		<ul th:replace="layout :: frgNav"></ul>
+
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<div id="content">
+
+				<!-- Begin Page Content -->
+				<div class="container-fluid">
+
+					<!-- Page Heading -->
+
+					<div class="container">
+
+						<div class="card o-hidden border-0 shadow-lg my-5">
+							<div class="card-body p-0">
+								<!-- Nested Row within Card Body -->
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="p-5">
+											<div class="text-center">
+												<h1 th:text="${title}" class="h4 text-gray-900 mb-4"></h1>
+											</div>
+											<form class="user" th:action="@{/tipoDisenio/save}"
+												th:object="${tipoDisenio}" method="post">
+												<hr>
+												<div class="form-group row">
+													<div class="col-sm-6 mb-3 mb-sm-0">
+														<input type="text" class="form-control form-control-user"
+															th:field="*{nombre}" placeholder="Nombre">
+													</div>
+													<div class="col-sm-6 mb-3 mb-sm-0">
+														<input type="text" class="form-control form-control-user"
+															th:field="*{encabezado}" placeholder="Encabezado">
+													</div>
+												</div>
+												<div class="form-group row">
+													<div class="col-sm-12 mb-3 mb-sm-0">
+														<input type="text" class="form-control form-control-user"
+															th:field="*{descripcion}" placeholder="Descripci&oacute;n">
+													</div>
+												</div>
+												<div class="form-group row">
+													<div class="col-sm-6 mb-3 mb-sm-0">
+														<input type="text" class="form-control form-control-user"
+															th:field="*{imgPaso1}"	placeholder="Paso 1">
+													</div>
+													<div class="col-sm-6 mb-3 mb-sm-0">
+														<input type="text" class="form-control form-control-user"
+															th:field="*{imgPaso2}"	placeholder="Paso 2">
+													</div>
+												</div>
+												<div class="form-group row">
+													<div class="col-sm-6 mb-3 mb-sm-0">
+														<input type="text" class="form-control form-control-user"
+															th:field="*{imgPaso3}"	placeholder="Paso 3">
+													</div>
+													<div class="col-sm-6 mb-3 mb-sm-0">
+														<input type="number" class="form-control form-control-user"
+															th:field="*{precioAconsejado}"	placeholder="Precio Aconsejado">
+													</div>
+												</div>
+												<hr> 	
+												<div class="form-group row">
+													<div class="col-sm-6 mb-3 mb-sm-0">
+														<input type="submit"
+															class="btn btn-success btn-user btn-block" value="Guardar"/>
+													</div>
+													<div class="col-sm-6 mb-3 mb-sm-0">
+														<a th:href="@{/tipoDisenio/list}	"
+															class="btn btn-danger btn-user btn-block"> Cancelar </a>
+													</div>		
+												</div>
+												<input type="hidden" th:field="*{idTipoDisenio}">
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+
+				</div>
+				<!-- /.container-fluid -->
+
+			</div>
+
+			<footer th:replace="layout :: frgFooter"></footer>
+
+		</div>
+
+	</div>
+
+
+</body>
+</html>

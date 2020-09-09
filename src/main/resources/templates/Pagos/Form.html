@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: frgHead"></head>
+<body id="page-top">
+
+	<div id="wrapper">
+		<ul th:replace="layout :: frgNav"></ul>
+
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<div id="content">
+
+				<!-- Begin Page Content -->
+				<div class="container-fluid">
+
+					<!-- Page Heading -->
+
+					<div class="container">
+
+						<div class="card o-hidden border-0 shadow-lg my-5">
+							<div class="card-body p-0">
+								<!-- Nested Row within Card Body -->
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="p-5">
+											<div class="text-center">
+												<h1 th:text="${title}" class="h4 text-gray-900 mb-4"></h1>
+											</div>
+											<form class="user" th:action="@{/pagos/save}"
+												th:object="${pagos}" method="post">
+												<hr>
+												<div class="form-group row">
+													<div class="col-sm-6 mb-3 mb-sm-0">
+														<input type="date" class="form-control form-control-user"
+															th:field="*{fecha}" placeholder="Fecha">
+													</div>
+													<div class="col-sm-6 mb-3 mb-sm-0">
+														<input type="number" class="form-control form-control-user"
+															th:field="*{valor}"	placeholder="Valor">
+													</div>
+												</div>
+												<div class="form-group row">
+													<div class="col-sm-6 mb-3 mb-sm-0">
+														<input type="text" class="form-control form-control-user"
+															th:field="*{descripcion}" placeholder="Descripci&oacute;n">
+													</div>
+													<div class="col-sm-6 mb-3 mb-sm-0">
+														<input type="text" class="form-control form-control-user"
+															th:field="*{imagen}" placeholder="Imagen">
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="col-sm-6 mb-3 mb-sm-0">
+														<label class="radio-inline"><input type="radio"
+															th:field="*{estado}" value="1" />&nbsp;Pagado</label>
+													</div>
+													<div class="col-sm-6">
+														<label class="radio-inline"><input type="radio"
+															th:field="*{estado}" value="0" />&nbsp;Pendiente</label>
+													</div>
+												</div>
+												<hr> 	
+												<div class="form-group row">
+													<div class="col-sm-6 mb-3 mb-sm-0">
+														<input type="submit"
+															class="btn btn-success btn-user btn-block" value="Guardar"/>
+													</div>
+													<div class="col-sm-6 mb-3 mb-sm-0">
+														<a th:href="@{/pagos/list}	"
+															class="btn btn-danger btn-user btn-block"> Cancelar </a>
+													</div>		
+												</div>
+												<input type="hidden" th:field="*{idPagos}">
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+
+				</div>
+				<!-- /.container-fluid -->
+
+			</div>
+
+			<footer th:replace="layout :: frgFooter"></footer>
+
+		</div>
+
+	</div>
+
+
+</body>
+</html>
