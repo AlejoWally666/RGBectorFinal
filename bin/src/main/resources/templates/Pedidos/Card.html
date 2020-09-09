@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: frgHead"></head>
+<body id="page-top">
+
+	<div id="wrapper">
+		<ul th:replace="layout :: frgNav"></ul>
+
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<div id="content">
+
+				<!-- Begin Page Content -->
+				<div class="container-fluid">
+
+					<!-- Page Heading -->
+
+					<div class="container">
+
+						<div class="card o-hidden border-0 shadow-lg my-5">
+							<div class="card-body p-0">
+								<!-- Nested Row within Card Body -->
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="p-5">
+											<div class="text-center">
+												<h1 th:text="Registro  + ${pedidos.idPedido}" class="h4 text-gray-900 mb-4"></h1>
+											</div>
+											<hr>
+											<div class="form-group row">
+												<h6 class="col-sm-6 mb-3 mb-sm-0">Id</h6>
+												<h6 class="col-sm-6 mb-3 mb-sm-0">Nombre</h6>
+												<div class="col-sm-6 mb-3 mb-sm-0">
+													<label class="form-control form-control-user"
+														th:text="${pedidos.idPedido}"></label>
+												</div>
+												<div class="col-sm-6 mb-3 mb-sm-0">
+													<label class="form-control form-control-user"
+														th:text="${pedidos.nombreProyecto}"></label>
+												</div>
+											</div>
+											<div class="form-group row">
+												<h6 class="col-sm-6 mb-3 mb-sm-0">Web Inspiracion</h6>
+												<h6 class="col-sm-6 mb-3 mb-sm-0">Donde lo usara</h6>
+												<div class="col-sm-6 mb-3 mb-sm-0">
+													<label class="form-control form-control-user"
+														th:text="${pedidos.webInspiracion}"></label>
+												</div>
+												<div class="col-sm-6 mb-3 mb-sm-0">
+													<label class="form-control form-control-user"
+														th:text="${pedidos.dondeUsara}"></label>
+												</div>
+											</div>
+											<div class="form-group row">
+												<h6 class="col-sm-6 mb-3 mb-sm-0">Plazo</h6>
+												<h6 class="col-sm-6 mb-3 mb-sm-0">Presupuesto</h6>
+												<div class="col-sm-6 mb-3 mb-sm-0">
+													<label class="form-control form-control-user"
+														th:text="${pedidos.plazo}"></label>
+												</div>
+												<div class="col-sm-6 mb-3 mb-sm-0">
+													<label class="form-control form-control-user"
+														th:text="${pedidos.presupuesto}"></label>
+												</div>
+											</div>
+											
+											<div class="form-group row">
+											<h6 class="col-sm-6 mb-3 mb-sm-0">Estado</h6>
+											<h6 class="col-sm-6 mb-3 mb-sm-0">Algo mas</h6>
+												<div class="col-sm-6 mb-3 mb-sm-0">
+													<label class="form-control form-control-user"
+														th:text="${pedidos.estado}"></label>
+												</div>
+												<div class="col-sm-6 mb-3 mb-sm-0">
+													<label class="form-control form-control-user"
+														th:text="${pedidos.algoMas}"></label>
+												</div>
+											</div>
+											<div class="form-group row">
+											<h6 class="col-sm-7 mb-3 mb-sm-0">Descripci&oacute;n</h6>
+												<div class="col-sm-12 mb-3 mb-sm-0">
+													<label class="form-control form-control-user"
+														th:text="${pedidos.descripcion}"></label>
+												</div>
+											</div>
+
+											<hr>
+
+											<h5 class="modal-title">Desea eliminar el Registro?</h5>
+											<div class="form-group row">
+												<div class="col-sm-6 mb-3 mb-sm-0">
+													<a th:href="@{/pedidos/delete/} + ${pedidos.idPedido}"
+														class="btn btn-success btn-user btn-block">Confirmar</a>
+												</div>
+												<div class="col-sm-6 mb-3 mb-sm-0">
+													<a th:href="@{/pedidos/list}	"
+														class="btn btn-danger btn-user btn-block"> Cancelar </a>
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+
+				</div>
+				<!-- /.container-fluid -->
+
+			</div>
+
+			<footer th:replace="layout :: frgFooter"></footer>
+
+		</div>
+
+	</div>
+
+
+</body>
+</html>

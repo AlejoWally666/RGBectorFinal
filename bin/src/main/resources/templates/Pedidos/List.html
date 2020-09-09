@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: frgHead"></head>
+
+<body>
+	<div id="wrapper">
+	<nav th:replace="layout :: frgNav"></nav>
+
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<div id="content">
+
+				<!-- Begin Page Content -->
+				<div class="container-fluid">
+
+					<!-- Page Heading -->
+					<div
+						class="d-sm-flex align-items-center justify-content-between mb-4">
+						<h1 th:text="${title}" class="h3 mb-0 text-gray-800"></h1>
+					</div>
+
+					<hr />
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Nombre Proyecto</th>
+								<th>Descipci&oacute;n</th>
+								<th>Plazo</th>
+								<th>Presupuesto</th>
+								<th>Fecha</th>
+								<th><a class="btn btn-sm btn-success"
+									th:href="@{/pedidos/create}">Nuevo</a></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="a : ${pedidos}">
+								<td th:text="${a.nombreProyecto}"></td>
+								<td th:text="${a.descripcion}"></td>
+								<td th:text="${a.plazo}"></td>
+								<td th:text="${a.presupuesto}"></td>
+								<td th:text="${a.fecha()}"></td>
+								<td><a class="btn btn-sm btn-warning"
+									th:href="@{/pedidos/update/} + ${(a.idPedido)}">&nbsp;Actualizar</a>
+									<a class="btn btn-sm btn-info"
+									th:href="@{/pedidos/retrieve/} + ${(a.idPedido)}">&nbsp;Consultar</a></td>
+							</tr>
+						</tbody>
+					</table>
+
+
+				</div>
+				<!-- /.container-fluid -->
+
+			</div>
+
+			<footer th:replace="layout :: frgFooter"></footer>
+
+		</div>
+
+	</div>
+
+</body>
+</html>
+
+
