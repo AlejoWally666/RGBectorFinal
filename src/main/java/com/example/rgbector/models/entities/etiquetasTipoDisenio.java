@@ -1,16 +1,19 @@
 package com.example.rgbector.models.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="etiquetas_tipos_disenios")
@@ -23,6 +26,9 @@ public class etiquetasTipoDisenio implements Serializable{
 	@Basic(optional=false)
 	@Column(name="pk_etiqueta_tipo_disenio")
 	private Long idEtiquetaTD;
+	
+	@Column(name="nombre")
+	private String nombre;
 
 	public etiquetasTipoDisenio() {
 		super();
@@ -41,16 +47,24 @@ public class etiquetasTipoDisenio implements Serializable{
 		this.idEtiquetaTD = idEtiquetaTD;
 	}
 	
-	/* etiquetasTipoDisenio Varios a Uno con usuarios */
+	public String getNombre() {
+		return nombre;
+	}
 
-	@JoinColumn(name="fk_usuario", referencedColumnName="pk_usuario")
-	@ManyToOne
-	private Usuario usuario;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 	
-	/* etiquetasTipoDisenio Varios a Uno con tipoDisenio */
+	@JsonIgnore
+	@OneToMany(mappedBy="etiqueta", fetch=FetchType.LAZY)
+	private List<tipoDisenio> tipoDisenio;
 
-	@JoinColumn(name="fk_tipo_disenio", referencedColumnName="pk_tipo_disenio")
-	@ManyToOne
-	private tipoDisenio tipoDisenio;
+	public List<tipoDisenio> getTipoDisenio() {
+		return tipoDisenio;
+	}
+
+	public void setTipoDisenio(List<tipoDisenio> tipoDisenio) {
+		this.tipoDisenio = tipoDisenio;
+	}
 	
 }

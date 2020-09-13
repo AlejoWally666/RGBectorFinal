@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: frgHead"></head>
+
+<body>
+	<div id="wrapper">
+	<nav th:replace="layout :: frgNav"></nav>
+	
+	<section class="breadcumb-area bg-img bg-overlay"
+		style="background-image: url(/img/bg-img/breadcumb3.jpg);">
+	</section>
+	<section class="contact-area mt-100">
+
+
+		<div class="container">
+
+			<!-- FORMULARIO CARD  -->
+			<div class="card">
+				<div class="card-body">
+					<form id="frmTipoDisenio" class="contact-form-area ml-3 mr-3"
+						th:object="${tipoDisenio}" th:action="@{/tipoDisenio/save}"
+						method="post" enctype="multipart/form-data">
+
+						<div class="row">
+
+							<h4>AGREGAR NUEVO TIPO DE DISE&Ntilde;O</h4>
+						</div>
+
+
+						<table class="table table-bordered table-hover"
+							id="tablaIntegrantes">
+							<tr>
+								<th>Etiqueta</th>
+								<th>Encabezado</th>
+								<th>Descripci&oacute;n</th>
+								<th>Imagen </th>
+								<th>Precio Aconsejado</th>
+							</tr>
+
+							<tr>
+								<td>
+									<select th:field="*{etiqueta}" class="form-control"	required>
+										<option th:each="e : ${etiquetas}" th:value="${e.idEtiquetaTD}" th:text="${e.nombre}" />
+									</select>
+								</td>
+								<td><input type="text" class="form-control form-control-user" th:field="*{encabezado}" placeholder="Encabezado"></td>
+								<td><input type="text" class="form-control form-control-user" th:field="*{descripcion}" placeholder="Descripci&oacute;n"></td>
+								<td><input type="file" name="photo" id="photo" class="form-control" /></td>
+								<td><input type="number" class="form-control form-control-user"	th:field="*{precioAconsejado}"	placeholder="Precio Aconsejado"></td>
+								
+							</tr>
+						</table>
+						<button type="submit" class="btn oneMusic-btn mt-30">
+							<i class="fa fa-check"></i> &nbsp;Agregar
+						</button>
+					</form>
+				</div>
+			</div>
+
+
+			<!-- Lista integrante -->
+
+			<table class="table table-hover">
+				<thead class="bg-light">
+					<tr>
+						<th><i></i>Tipo Dise&ntilde;o</th>
+						<th><i></i>Precio Aconsejado</th>
+						<th><i></i>Imagen</th>
+						<th><i class="fas fa-trash"></i></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="e : ${tipoDisenios}">
+						<td th:text="${e.etiqueta.nombre}"></td>
+						<td th:text="${e.precioAconsejado}"></td>
+						<td><img th:src="@{/img/TipoDisenio/} + ${e.imagen}" width="80" height="80" /></td>
+
+						<td>
+							<button  th:onclick="'eliminar('+${e.idTipoDisenio}+')'"
+								class="btn btn-xs  btn-4">
+								<i class="fas fa-trash-alt"></i>
+								Eliminar
+							</button>
+						</td>
+
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+
+	</section>
+		
+	<br>
+	<br>
+	<br>
+	<br>
+	
+	</div>
+	<!-- ##### Login Area End ##### -->
+	<footer th:replace="layout :: frgFooter"></footer>
+	<script th:src="@{/js/tipoDisenio/delete-tipoDisenio.js}"></script>
+</body>
+</html>

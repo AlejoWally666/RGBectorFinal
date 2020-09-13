@@ -19,6 +19,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="usuario")
 public class Usuario extends usuarios implements Serializable {
@@ -99,7 +101,7 @@ public class Usuario extends usuarios implements Serializable {
 		this.habilitado = h;
 	} 
 
-/* usuarios Uno a Varios con propuestas */
+    /* usuarios Uno a Varios con propuestas */
 	
 	@OneToMany(mappedBy="usuario", fetch=FetchType.LAZY)
 	private List<propuestas> propuestas;
@@ -109,10 +111,10 @@ public class Usuario extends usuarios implements Serializable {
 	@OneToOne(mappedBy="usuario", fetch=FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL)
 	private perfiles perfiles;
 	
-	/* usuarios Uno a Varios con etiquetasTipoDisenio */
-	
+	/* usuarios Uno a Varios con TipoDisenio */
+	@JsonIgnore
 	@OneToMany(mappedBy="usuario", fetch=FetchType.LAZY)
-	private List<etiquetasTipoDisenio> etiquetasTipoDisenio;
+	private List<tipoDisenio> tipoDisenio;
 	
 	/* usuarios Uno a Varios con pedidos */
 	
@@ -141,14 +143,6 @@ public class Usuario extends usuarios implements Serializable {
 		this.perfiles = perfiles;
 	}
 
-	public List<etiquetasTipoDisenio> getEtiquetasTipoDisenio() {
-		return etiquetasTipoDisenio;
-	}
-
-	public void setEtiquetasTipoDisenio(List<etiquetasTipoDisenio> etiquetasTipoDisenio) {
-		this.etiquetasTipoDisenio = etiquetasTipoDisenio;
-	}
-
 	public List<pedidos> getPedidos() {
 		return pedidos;
 	}
@@ -163,6 +157,14 @@ public class Usuario extends usuarios implements Serializable {
 
 	public void setTipoUsuario(tipoUsuario tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
+	}
+
+	public List<tipoDisenio> getTipoDisenio() {
+		return tipoDisenio;
+	}
+
+	public void setTipoDisenio(List<tipoDisenio> tipoDisenio) {
+		this.tipoDisenio = tipoDisenio;
 	}
 
 
