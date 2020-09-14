@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: frgHead">
+
+</head>
+
+<body>
+	<div id="wrapper">
+	<nav th:replace="layout :: frgNav"></nav>
+
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<div id="content">
+
+				<!-- Begin Page Content -->
+				<div class="container-fluid">
+
+					<!-- Page Heading -->
+					<div
+						class="row d-sm-flex align-items-center justify-content-around mb-4 mt-5">
+						<h1 th:text="${title}" class="h3 mb-0 text-gray-800"></h1>
+						<a class="btn btn-sm btn-success"
+									th:href="@{/pedidos/list}">Regresar</a>
+					</div>
+
+					<hr />
+					
+					
+					<div
+						class="row justify-content-around">
+						<div class="col-2">
+						</div>
+						<div class="col-8">
+						<canvas id="canvas"></canvas>
+						</div>
+						<div class="col-2">
+						</div>
+					</div>
+					
+
+
+
+
+				</div>
+				<!-- /.container-fluid -->
+
+			</div>
+
+			
+
+		</div>
+
+	</div>
+
+	<footer th:replace="layout :: frgFooter"></footer>
+	<div th:replace="layout :: frgScripts"></div>
+	<script th:src="@{/js/usuario/delete-usuario.js}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script>
+	var color = Chart.helpers.color;
+var jsonfile = {
+   "jsonarray": [{
+	      "mes": "Junio",
+	      "tipo1": 1,
+		  "tipo2":0,
+		  "tipo3":1,
+		  "tipo4":0
+	   }, {
+      "mes": "Julio",
+      "tipo1": 2,
+	  "tipo2":1,
+	  "tipo3":1,
+	  "tipo4":0
+   }, {
+	      "mes": "Agosto",
+	      "tipo1": 1,
+		  "tipo2":3,
+		  "tipo3":0,
+		  "tipo4":1
+	   }, {
+		      "mes": "Septiembre",
+		      "tipo1": 4,
+			  "tipo2":1,
+			  "tipo3":1,
+			  "tipo4":2
+		   }
+	   ]
+};
+
+var labels = jsonfile.jsonarray.map(function(e) {
+   return e.mes;
+});
+var data = jsonfile.jsonarray.map(function(e) {
+   return e.tipo1;
+});
+var data1 = jsonfile.jsonarray.map(function(e) {
+	   return e.tipo2;
+	});
+var data2= jsonfile.jsonarray.map(function(e) {
+	   return e.tipo3;
+	});
+var data3= jsonfile.jsonarray.map(function(e) {
+	   return e.tipo4;
+	});
+
+var ctx = canvas.getContext('2d');
+var config = {
+   type: 'bar',
+   options:{
+			responsive: true,
+			legend: {
+				position: 'top',
+			},
+			title: {
+				display: true,
+				text: 'Pedidos por Tipo de Dise\361o y agrupados por mes'
+			},
+			scales: {
+		        yAxes: [{
+		            ticks:{
+						beginAtZero: true
+					}
+		        }]
+		    }
+		},
+   data: {
+      labels: labels,
+      datasets: [{
+         label: 'Logotipo',
+         data: data,
+         backgroundColor: color(getRandomColor()).alpha(0.5).rgbString()
+      },
+	  {
+         label: 'Banner Redes Sociales',
+         data: data1,
+         backgroundColor: color(getRandomColor()).alpha(0.5).rgbString()
+      },
+	  {
+          label: 'Tajetas de Presentaci\363n',
+          data: data2,
+          backgroundColor: color(getRandomColor()).alpha(0.5).rgbString()
+       },
+ 	  {
+           label: 'V\355deo',
+           data: data3,
+           backgroundColor: color(getRandomColor()).alpha(0.5).rgbString()
+        }
+	  ]
+   }
+};
+function getRandomColor() {
+	  var letters = '0123456789ABCDEF';
+	  var color = '#';
+	  for (var i = 0; i < 6; i++) {
+	    color += letters[Math.floor(Math.random() * 16)];
+	  }
+	  return color;
+	}
+
+var chart = new Chart(ctx, config);
+</script>
+	
+</body>
+</html>
+
+

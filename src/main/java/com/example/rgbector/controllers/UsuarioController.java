@@ -100,5 +100,12 @@ public class UsuarioController {
 		return "usuario/list";
 	}
 	
+	@GetMapping(value="/reporte")
+	public String report(Model model) {
+		List<Usuario> usuarios = service.findAll();
+		model.addAttribute("usuarios", usuarios);
+		model.addAttribute("title", "Reporte de usuarios");
+		return "usuario/report";
+	}
 
 }

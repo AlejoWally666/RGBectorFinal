@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.rgbector.models.entities.Usuario;
 import com.example.rgbector.models.entities.pedidos;
 import com.example.rgbector.models.services.IPedidosService;
 
@@ -69,4 +70,30 @@ public class pedidosController {
 		srvPedidos.save(pedidos);
 		return "redirect:/pedidos/list";
 	}
+
+	
+	@GetMapping(value="/reporteFrelancer")
+	public String report(Model model) {
+		List<pedidos> pedidos = srvPedidos.findAll();
+		model.addAttribute("pedidos", pedidos);
+		model.addAttribute("title", "Reporte de pedidos - Frelancer");
+		return "pedidos/report";
+	}
+	
+	@GetMapping(value="/reporteTipoDisenio")
+	public String reportTipo(Model model) {
+		List<pedidos> pedidos = srvPedidos.findAll();
+		model.addAttribute("pedidos", pedidos);
+		model.addAttribute("title", "Reporte de pedidos - Tipo de Diseño");
+		return "pedidos/reportTipo";
+	}
+	
+	@GetMapping(value="/reporteUsuario")
+	public String reportUsuario(Model model) {
+		List<pedidos> pedidos = srvPedidos.findAll();
+		model.addAttribute("pedidos", pedidos);
+		model.addAttribute("title", "Reporte de pedidos - Usuario");
+		return "pedidos/reportUsuario";
+	}
+	
 }
