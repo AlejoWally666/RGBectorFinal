@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" 
-		xmlns:sec="http://www.thymeleaf.org/spring-security"  lang="en">
+		xmlns:sec="http://www.thymeleaf.org/spring-security"  lang="es">
 
 <head th:fragment="frgHead">
 
-<meta charset="utf-8">
+<meta charset="ISO-8859-1">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Sitio Web para contratar Diseñadores gráficos Freelance">
+  <meta name="description" content="Sitio Web para contratar Dise&ntilde;adores gr&aacute;ficos Freelance">
   <meta name="author" content="Alejandro Salas, David Erazo">
 
 
@@ -40,7 +40,7 @@
 		<div sec:authorize="!isAuthenticated()" class="container">
 			<a class="navbar-brand" th:href="@{/}">RGBector</a> 
 			<div class="row">
-				<a class="btn btn-primary" th:href="@{/login}">Iniciar Sesión</a>				
+				<a class="btn btn-primary" th:href="@{/login}">Iniciar Sesi&oacute;n</a>				
 	                        <div>
 					            &nbsp &nbsp
 					        </div>
@@ -68,7 +68,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-9 mx-auto">
-                <h1 class="mb-5">Hacemos posible un gran trabajo creativo gracias a nuestra comunidad de diseñadores profesionales.</h1>
+                <h1 class="mb-5">Hacemos posible un gran trabajo creativo gracias a nuestra comunidad de dise&ntilde;adores profesionales.</h1>
 	            </div>
 	            <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
 	               <div class="row">
@@ -94,7 +94,7 @@
 							<i class="fas fa-bullhorn m-auto text-primary"></i>
 						</div>
 						<h3>Publicar un proyecto</h3>
-	                    <p class="lead mb-0">Es fácil. Simplemente publica un trabajo que necesitas realizar y recibe ofertas competitivas de parte de freelancers en cuestión de minutos.</p>
+	                    <p class="lead mb-0">Es f&aacute;cil. Simplemente publica un trabajo que necesitas realizar y recibe ofertas competitivas de parte de freelancers en cuesti&oacute;n de minutos.</p>
 	                </div>
 				</div>
 				<div class="col-lg-4">
@@ -102,7 +102,7 @@
 						<div class="features-icons-icon d-flex">
 							<i class="fas fa-tasks m-auto text-primary"></i>
 	                    </div>
-	                    <h3>Selecciona la Propuesta más conveniente</h3>
+	                    <h3>Selecciona la Propuesta m&aacute;s conveniente</h3>
 	                    <p class="lead mb-0">Recibe propuestas de excelentes freelancers. Elige al mejor para tu proyecto.</p>
 	                </div>
 				</div>
@@ -127,24 +127,24 @@
 				<div class="col-lg-6 order-lg-2 text-white showcase-img"
 					style="background-image: url('img/bg-caso-1.jpg');"></div>
 				<div class="col-lg-6 order-lg-1 my-auto showcase-text">
-					<h2>Diseñadores expertos</h2>
-					<p class="lead mb-0">Obtén un diseño que te encante gracias a nuestra comunidad creativa, aquí encontrar y contratar diseñadores con talento. Verás crecer tu negocio con nosotros.</p>
+					<h2>Dise&ntilde;adores expertos</h2>
+					<p class="lead mb-0">Obt&eacute;n un dise&ntilde;o que te encante gracias a nuestra comunidad creativa, aqu&iacute; encontrar y contratar dise&ntilde;adores con talento. Ver&aacute;s crecer tu negocio con nosotros.</p>
 				</div>
 			</div>
 			<div class="row no-gutters">
 				<div class="col-lg-6 text-white showcase-img"
 					style="background-image: url('img/bg-caso-2.jpg');"></div>
 				<div class="col-lg-6 my-auto showcase-text">
-					<h2>Logos, páginas web, portadas de libros y ¡mucho más!</h2>
-					<p class="lead mb-0">Obtén el logo perfecto ¡o cualquier otro tipo de diseño de entre más de 90 categorías! Sean como sean las necesidades o el presupuesto de tu proyecto, te ayudaremos a hacerlo realidad.</p>
+					<h2>Logos, p&aacute;ginas web, portadas de libros y &#161;mucho m&aacute;s!</h2>
+					<p class="lead mb-0">Obt&eacute;n el logo perfecto &#161;o cualquier otro tipo de dise&ntilde;o de entre m&aacute;s de 90 categor&iacute;as! Sean como sean las necesidades o el presupuesto de tu proyecto, te ayudaremos a hacerlo realidad.</p>
 				</div>
 			</div>
 			<div class="row no-gutters">
 				<div class="col-lg-6 order-lg-2 text-white showcase-img"
 					style="background-image: url('img/bg-caso-3.jpg');"></div>
 				<div class="col-lg-6 order-lg-1 my-auto showcase-text">
-					<h2>El diseño es capaz de todo</h2>
-					<p class="lead mb-0">>Nuestro proceso de creativo es capaz de hacer magia. Gracias al trabajo de nuestra comunidad creativa global, que trabaja de manera colaborativa, convertiremos tu idea en un magnífico diseño. Diseño de Interfaces (UI), Redacción y Marketing. ¡Cualquier trabajo que pueda realizarse de forma remota!.</p>
+					<h2>El dise&ntilde;o es capaz de todo</h2>
+					<p class="lead mb-0">Nuestro proceso de creativo es capaz de hacer magia. Gracias al trabajo de nuestra comunidad creativa global, que trabaja de manera colaborativa, convertiremos tu idea en un magn&iacute;fico dise&ntilde;o. Dise&ntilde;o de Interfaces (UI), Redacci&oacute;n y Marketing. &#161;Cualquier trabajo que pueda realizarse de forma remota!.</p>
 				</div>
 			</div>
 		</div>
@@ -153,7 +153,7 @@
 	<!-- Testimonials -->
 	<section th:fragment="frgTestimonial" class="testimonials text-center bg-light">
 		<div class="container">
-			<h2 class="mb-5">Qué esta diciendo la gente...</h2>
+			<h2 class="mb-5">Qu&eacute; esta diciendo la gente...</h2>
 			<div class="row">
 				<div class="col-lg-4">
 					<div class="testimonial-item mx-auto mb-5 mb-lg-0">
@@ -176,7 +176,7 @@
 						<img class="img-fluid rounded-circle mb-3"
 							src="img/testimonials-3.png" alt="">
 						<h5>Kevin L.</h5>
-	                    <p class="font-weight-light mb-0">"Diseñadores muy calificados!"</p>
+	                    <p class="font-weight-light mb-0">"Dise&ntilde;adores muy calificados!"</p>
 	                </div>
 				</div>
 			</div>
@@ -216,7 +216,7 @@
 						/*<![CDATA[*/
 							var message = /*[[${success}]]*/
 							Swal.fire({
-									title : '¡Correcto!', 
+									title : '&#161;Correcto!', 
 									text: message,
 									icon : 'success',
 									button : 'Aceptar'
@@ -229,7 +229,7 @@
 						/*<![CDATA[*/
 							var message = /*[[${error}]]*/
 							Swal.fire({
-									title : '¡Error!', 
+									title : '&#161;Error!', 
 									text: message,
 									icon : 'error',
 									button : 'Aceptar'
@@ -250,13 +250,13 @@
 						<li class="list-inline-item">&sdot;</li>
 						<li class="list-inline-item"><a th:href="@{/tipoUsuario/list}">Tipo de usuario</a></li>
 						<li class="list-inline-item">&sdot;</li>
-						<li class="list-inline-item"><a th:href="@{/tipoDisenio/add}">Tipos de Diseño</a></li>
+						<li class="list-inline-item"><a th:href="@{/tipoDisenio/list}">Tipos de Dise&ntilde;o</a></li>
 						<li class="list-inline-item">&sdot;</li>
 						<li class="list-inline-item"><a th:href="@{/perfiles/list}">Perfiles de Usuario</a></li>
 						<li class="list-inline-item">&sdot;</li>
-						<li class="list-inline-item"><a th:href="@{/pedidos/list}">Pedidos de Diseños</a></li>
+						<li class="list-inline-item"><a th:href="@{/pedidos/list}">Pedidos de Dise&ntilde;os</a></li>
 						<li class="list-inline-item">&sdot;</li>
-						<li class="list-inline-item"><a th:href="@{/propuestas/list}">Propuestas de Diseños</a></li>
+						<li class="list-inline-item"><a th:href="@{/propuestas/list}">Propuestas de Dise&ntilde;os</a></li>
 						<li class="list-inline-item">&sdot;</li>
 						<li class="list-inline-item"><a th:href="@{/entregas/list}">Entregas</a></li>
 						<li class="list-inline-item">&sdot;</li>

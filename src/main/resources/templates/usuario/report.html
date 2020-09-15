@@ -2,10 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="layout :: frgHead">
-
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!-- <script th:src="@{/js/reportes/usuarioTipoMes.js}"></script> -->
 </head>
 
-<body>
+<body style="background: url(/img/bg-masthead.jpg) no-repeat center center; background-size: cover;">
 	<div id="wrapper">
 	<nav th:replace="layout :: frgNav"></nav>
 
@@ -17,21 +18,21 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<div
-						class="row d-sm-flex align-items-center justify-content-around mb-4 mt-5">
-						<h1 th:text="${title}" class="h3 mb-0 text-gray-800"></h1>
-						<a class="btn btn-sm btn-success"
-									th:href="@{/usuario/list}">Regresar</a>
-					</div>
-
-					<hr />
+					
 					
 					
 					<div
 						class="row justify-content-around">
 						<div class="col-2">
 						</div>
-						<div class="col-8">
+						<div class="col-8 card o-hidden border-0 shadow-lg my-5">
+						<div class="row d-sm-flex align-items-center justify-content-around mb-4 mt-5">
+						<h1 th:text="${title}" class="h3 mb-0 text-gray-800"></h1>
+						<a class="btn btn-sm btn-success"
+									th:href="@{/usuario/list}">Regresar</a>
+						</div>
+	
+						<hr />
 						<canvas id="canvas"></canvas>
 						</div>
 						<div class="col-2">
@@ -59,27 +60,10 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script>
+	$.getJSON('http://cityemark.com/rgbector/apis/repTipoUsuarioMes.php', function(data) {
+        
 	var color = Chart.helpers.color;
-var jsonfile = {
-   "jsonarray": [{
-	      "mes": "Junio",
-	      "cliente": 1,
-		  "diseniador":2
-	   }, {
-      "mes": "Julio",
-      "cliente": 1,
-	  "diseniador":0
-   }, {
-	      "mes": "Agosto",
-	      "cliente": 4,
-		  "diseniador":5
-	   }, {
-		      "mes": "Septiembre",
-		      "cliente": 3,
-			  "diseniador":2
-		   }
-	   ]
-};
+var jsonfile = data;
 
 var labels = jsonfile.jsonarray.map(function(e) {
    return e.mes;
@@ -137,6 +121,8 @@ function getRandomColor() {
 	}
 
 var chart = new Chart(ctx, config);
+
+    });
 </script>
 	
 </body>

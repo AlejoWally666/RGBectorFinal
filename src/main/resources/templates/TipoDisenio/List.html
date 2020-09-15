@@ -16,14 +16,17 @@
 
 					<!-- Page Heading -->
 					<div
-						class="d-sm-flex align-items-center justify-content-between mb-4">
+						class="row d-sm-flex align-items-center justify-content-around mb-4 mt-5">
 						<h1 th:text="${title}" class="h3 mb-0 text-gray-800"></h1>
+						<a class="btn btn-sm btn-success"
+									th:href="@{/pedidos/reporteTipoDisenio}">Ver Reporte</a>
 					</div>
 
 					<hr />
 					<table class="table table-hover">
 						<thead>
 							<tr>
+								<th>Tipo de Dise&ntilde;o</th>
 								<th>Descripcion</th>
 								<th>Precio aconsejado</th>
 								<th><a class="btn btn-sm btn-success"
@@ -32,6 +35,7 @@
 						</thead>
 						<tbody>
 							<tr th:each="a : ${tipoDisenio}">
+								<td th:text="${a.nombre}"></td>
 								<td th:text="${a.descripcion}"></td>
 								<td th:text="${a.precioAconsejado}"></td>
 								<td><a class="btn btn-sm btn-warning"

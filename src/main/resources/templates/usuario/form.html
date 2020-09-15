@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout :: frgHead">
+<meta charset="ISO-8859-1">
 </head>
-<body>
+<body style="background: url(/img/bg-masthead.jpg) no-repeat center center; background-size: cover;">
 
 	<div id="wrapper">
 		<ul th:replace="layout :: frgNav"></ul>
@@ -14,9 +15,10 @@
 					<!-- Page Heading -->
 					<div class="container">
 
+								<div class="row justify-content-around">
+								<div class="col-6">
 						<div class="card o-hidden border-0 shadow-lg my-5">
 							<div class="card-body p-0">
-								<div class="col-lg-6">
 									<div class="p-5">
 										<div class="text-center">
 											<h1 th:text="${title}" class="h4 text-gray-900 mb-4"></h1>
@@ -25,7 +27,19 @@
 											class="user" method="post">
 											<hr>
 											<div class="form-group">
-
+												<div class="input-group mb-3">
+														<div class="input-group-prepend">
+															<span class="input-group-text"><i
+																class="fas fa-user"></i></span>
+														</div>
+														<input type="text" class="form-control form-control-user"
+															th:field="*{nombres}"
+															th:errorclass="'form-control is-invalid'"
+															placeholder="Nombres" required> <small
+															class="invalid-feedback"
+															th:if="${#fields.hasErrors('nombres')}"
+															th:errors="*{nombres}"></small>
+													</div>
 												<div class="input-group mb-3">
 													<div class="input-group-prepend">
 														<span class="input-group-text"><i
@@ -51,21 +65,22 @@
 														th:errors="*{password}"></small>
 												</div>
 												
-												<div class="form-group row">
-												<div class="col-sm-4 mb-3 mb-sm-0">
-													<div class="input-group mb-3">
+													
+													<!-- <div class="input-group mb-3">
 														<div class="input-group-prepend">
 															<span class="input-group-text"><i
-																class="fas fa-user"></i></span>
+																class="fas fa-address-card"></i></span>
 														</div>
-														<input type="text" class="form-control form-control-user"
-															th:field="*{nombres}"
-															th:errorclass="'form-control is-invalid'"
-															placeholder="Nombres" required> <small
-															class="invalid-feedback"
-															th:if="${#fields.hasErrors('nombres')}"
-															th:errors="*{nombres}"></small>
-													</div>
+														<select class="form-control"
+															th:field=*{tipoUsuario.idTipoUsuario}
+															th:errorclass="'form-control is-invalid'" required>
+															<option th:each="us : ${tipoUsuario}"
+																th:value="${us.idTipoUsuario}" th:text="${us.nombre}"></option>
+														</select> <small class="invalid-feedback"
+															th:if="${#fields.hasErrors('tipoUsuario')}"
+															th:errors="*{tipoUsuario}"></small>
+													</div>-->
+													
 													<div class="input-group mb-3">
 														<div class="input-group-prepend">
 															<span class="input-group-text"><i
@@ -74,21 +89,15 @@
 														<select class="form-control"
 															th:field=*{tipoUsuario.idTipoUsuario}
 															th:errorclass="'form-control is-invalid'" required>
-															<option value="">--Seleccione Tipo de Usuario--</option>
-															<option th:each="us : ${tipoUsuario}"
-																th:value="${us.idTipoUsuario}" th:text="${us.nombre}"></option>
+															<option
+																value="1" text="Quiero un Dise&ntilde;o">Quiero un Dise&ntilde;o</option>
+																<option 
+																value="2" text="Soy Dise&ntilde;ador">Soy Dise&ntilde;ador</option>
 														</select> <small class="invalid-feedback"
 															th:if="${#fields.hasErrors('tipoUsuario')}"
 															th:errors="*{tipoUsuario}"></small>
 													</div>
-												</div>
-													
-												</div>
 
-
-
-												<div class="form-group row">
-												<div class="col-sm-4 mb-3 mb-sm-0">
 													<div class="input-group mb-3">
 														<div class="input-group-prepend">
 															<span class="input-group-text"><i
@@ -115,27 +124,41 @@
 															th:if="${#fields.hasErrors('correo')}"
 															th:errors="*{correo}"></small>
 													</div>
-												</div>
-												</div>
 												
 												
 
-												<div class="btn-group">
-													<button type="submit" class="btn btn-success">
-														<i class="fas fa-save"></i> &nbsp;Guardar
-													</button>
-													<a th:href="@{/}" class="btn btn-danger"> <i
-														class="fas fa-times"></i> &nbsp;Cancelar
-													</a>
-												</div>
+												
 
 											</div>
+											
+											<div class="col-12 justify-content-around">
+													<button type="submit" class="col-12 btn btn-primary">
+														<i class="fas fa-user-check"></i><strong> &nbsp;Resgistrarse</strong>
+													</button>
+													</div>	
+											<div class="row flex justify-content-aroud  mt-3">														
+													<div class="col-6 justify-content-center">
+													<div>
+													&#191;Ya tiene una cuenta? 
+													<a th:href="@{/login}" class="col-12"> 
+													Iniciar sesi&oacute;n
+													</a>
+													</div>
+														</div>												
+													<div class="col-6 justify-content-around">
+													<a th:href="@{/}" class="col-12 btn btn-danger"> 
+														<i class="fas fa-user-times"></i> &nbsp;Cancelar
+													</a>
+													</div>
+												</div>
 											<input type="hidden" th:field="*{idusuario}">
 										</form>
 									</div>
-								</div>
+								
 							</div>
 						</div>
+					</div>
+								</div>
 					</div>
 				</div>
 			</div>

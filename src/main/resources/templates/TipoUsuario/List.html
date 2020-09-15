@@ -3,7 +3,7 @@
 
 <head th:replace="layout :: frgHead"></head>
 
-<body>
+<body style="background: url(/img/bg-masthead.jpg) no-repeat center center; background-size: cover;">
 	<div id="wrapper">
 	<nav th:replace="layout :: frgNav"></nav>
 
@@ -14,17 +14,18 @@
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
 
+				<div class="row justify-content-around">
+				<div class="col-5 card o-hidden border-0 shadow-lg my-5">
 					<!-- Page Heading -->
 					<div
-						class="d-sm-flex align-items-center justify-content-between mb-4">
+						class="d-sm-flex align-items-center justify-content-around mt-2 ">
 						<h1 th:text="${title}" class="h3 mb-0 text-gray-800"></h1>
 					</div>
 
-					<hr />
-					<table class="table table-hover">
+					<table class="table table-hover text-align-center">
 						<thead>
 							<tr>
-								<th>Nombre</th>
+								<th>Tipo de Usuario</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -33,8 +34,26 @@
 							</tr>
 						</tbody>
 					</table>
+					<div
+						class="mt-2 " style="text-align:center;">
+						
+					<h2 class="h4 mb-0" style="color:#f5826d;">Encuentra un dise&ntilde;ador que te encante</h2>
+					<p class="p mt-1 mb-2 text-gray-600" style="text-align:justify;">Tenemos dise&ntilde;adores profesionales en varias <a th:href="@{/tipoDisenio/list}">especialidades de dise&ntilde;o</a>.
+					<br>
+<a th:href="@{/usuarios/create}"> Reg&iacute;strate</a> para encontrar el dise&ntilde;ador perfecto para lo que necesites.</p>
+					</div>
+					<hr>
+					<div
+						class="mt-1 " style="text-align:center;">
+						
+					<h2 class="h4 mb-0" style="color:#f5826d;">Da un impulso a tu carrera</h2>
+					<p class="p mt-1 mb-2 text-gray-600" style="text-align:justify;"><strong>T&uacute; te ocupas de dise&ntilde;ar. Nosotros hacemos el resto.</strong></p>
+					<p class="p mt-1 mb-2 text-gray-600" style="text-align:justify;">Haz lo que m&aacute;s te gusta cobrando a trav&eacute;s de 99designs. Te ponemos en contacto con clientes de todo el mundo y pasas a ser parte de nuestra comunidad global de incre&iacute;bles dise&ntilde;adores - todo en un lugar de trabajo seguro en que el puedes confiar.</p>
+					</div>
+				</div>
+				</div>
 
-
+				
 				</div>
 				<!-- /.container-fluid -->
 

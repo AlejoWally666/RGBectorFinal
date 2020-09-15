@@ -48,9 +48,9 @@ public class tipoDisenioController {
 	@GetMapping(value = "/create") // https://localhost:8080/tipoDisenio/create
 	public String create(Model model) {
 		tipoDisenio tipoDisenio = new tipoDisenio();
-		model.addAttribute("title", "Registro de una nuevo Tipo de Diseño");
+		model.addAttribute("title", "Registro de un nuevo Tipo de Diseño");
 		model.addAttribute("tipoDisenio", tipoDisenio); // similar al ViewBag
-		return "tipoDisenio/form"; // la ubicacion de la vista
+		return "tipoDisenio/Form"; // la ubicacion de la vista
 	}
 
 	@GetMapping(value = "/retrieve/{id}")
@@ -78,8 +78,8 @@ public class tipoDisenioController {
 	public String list(Model model) {
 		List<tipoDisenio> tipoDisenio = srvTipoDisenio.findAll();
 		model.addAttribute("tipoDisenio", tipoDisenio);
-		model.addAttribute("title", "Listado de Tipo de Diseño");
-		return "tipoDisenio/list";
+		model.addAttribute("title", "Listado de Tipos de Diseño");
+		return "tipoDisenio/List";
 	}
 	
 	@GetMapping(value="/add")//https://localhost:8080/integrante/add

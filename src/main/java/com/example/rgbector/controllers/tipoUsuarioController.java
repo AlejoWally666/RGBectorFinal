@@ -29,7 +29,7 @@ public class tipoUsuarioController {
 	public String list(Model model) {
 		List<tipoUsuario> tipoUsuario = srvTipoUsuario.findAll();
 		model.addAttribute("tipoUsuario", tipoUsuario);
-		model.addAttribute("title", "Listado de tipoUsuario");
+		model.addAttribute("title", "Listado de Tipos de Usuario");
 		return "tipoUsuario/list";
 	}
 }
