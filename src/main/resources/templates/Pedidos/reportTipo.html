@@ -5,7 +5,7 @@
 
 </head>
 
-<body>
+<body style="background: url(/img/bg-masthead.jpg) no-repeat center center; background-size: cover;">
 	<div id="wrapper">
 	<nav th:replace="layout :: frgNav"></nav>
 
@@ -17,14 +17,7 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<div
-						class="row d-sm-flex align-items-center justify-content-around mb-4 mt-5">
-						<h1 th:text="${title}" class="h3 mb-0 text-gray-800"></h1>
-						<a class="btn btn-sm btn-success"
-									th:href="@{/pedidos/list}">Regresar</a>
-					</div>
-
-					<hr />
+					
 					
 					
 					<div
@@ -32,7 +25,17 @@
 						<div class="col-2">
 						</div>
 						<div class="col-8">
+						 <div class="d-flex flex-column card o-hidden border-0 shadow-lg m-5">
+						<div
+						class="row d-sm-flex align-items-center justify-content-around mb-4 mt-5">
+						<h1 th:text="${title}" class="h3 mb-0 text-gray-800"></h1>
+						<a class="btn btn-sm btn-success"
+									th:href="@{/pedidos/list}">Regresar</a>
+					</div>
+
+					<hr />
 						<canvas id="canvas"></canvas>
+						</div>
 						</div>
 						<div class="col-2">
 						</div>
@@ -59,35 +62,10 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script>
+	$.getJSON('https://time2drink.com/rgbector/apis/repPedidosTipoDisenio.php', function(data) {
+	     
 	var color = Chart.helpers.color;
-var jsonfile = {
-   "jsonarray": [{
-	      "mes": "Junio",
-	      "tipo1": 1,
-		  "tipo2":0,
-		  "tipo3":1,
-		  "tipo4":0
-	   }, {
-      "mes": "Julio",
-      "tipo1": 2,
-	  "tipo2":1,
-	  "tipo3":1,
-	  "tipo4":0
-   }, {
-	      "mes": "Agosto",
-	      "tipo1": 1,
-		  "tipo2":3,
-		  "tipo3":0,
-		  "tipo4":1
-	   }, {
-		      "mes": "Septiembre",
-		      "tipo1": 4,
-			  "tipo2":1,
-			  "tipo3":1,
-			  "tipo4":2
-		   }
-	   ]
-};
+var jsonfile = data;
 
 var labels = jsonfile.jsonarray.map(function(e) {
    return e.mes;
@@ -143,7 +121,7 @@ var config = {
           backgroundColor: color(getRandomColor()).alpha(0.5).rgbString()
        },
  	  {
-           label: 'V\355deo',
+           label: 'Etiquetas de dise\u00F1o',
            data: data3,
            backgroundColor: color(getRandomColor()).alpha(0.5).rgbString()
         }
@@ -160,6 +138,9 @@ function getRandomColor() {
 	}
 
 var chart = new Chart(ctx, config);
+
+
+    });
 </script>
 	
 </body>

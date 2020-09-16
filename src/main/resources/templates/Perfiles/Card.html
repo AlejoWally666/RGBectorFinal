@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout :: frgHead"></head>
-<body id="page-top">
+<body id="page-top" style="background: url(/img/bg-masthead.jpg) no-repeat center center; background-size: cover;">
 
 	<div id="wrapper">
 		<ul th:replace="layout :: frgNav"></ul>
@@ -24,7 +24,7 @@
 									<div class="col-lg-12">
 										<div class="p-5">
 											<div class="text-center">
-												<h1 th:text="Registro  + ${perfiles.idperfil}" class="h4 text-gray-900 mb-4"></h1>
+												<h1 th:text="${title}" class="h4 text-gray-900 mb-4"></h1>
 											</div>
 											<hr>
 											<div class="form-group row">
@@ -40,23 +40,13 @@
 												</div>
 											</div>
 											<div class="form-group row">
-												<h6 class="col-sm-6 mb-3 mb-sm-0">Foto Perfil</h6>
-												<h6 class="col-sm-6 mb-3 mb-sm-0">Foto Portada</h6>
-												<div class="col-sm-6 mb-3 mb-sm-0">
-													<label class="form-control form-control-user"
-														th:text="${perfiles.urlFotoPerfil}"></label>
-												</div>
-												<div class="col-sm-6 mb-3 mb-sm-0">
-													<label class="form-control form-control-user"
-														th:text="${perfiles.urlFotoPortada}"></label>
-												</div>
+												<h6 class="col-sm-2 m-2 mb-sm-0">Foto Perfil</h6>
+												<h6 class="col-sm-9 m-2 mb-sm-0">Foto Portada</h6>
 											</div>
 											<div class="form-group row">
-												<h6 class="col-sm-6 mb-3 mb-sm-0">Descripci&oacute;n</h6>
-												<div class="col-sm-12 mb-3 mb-sm-0">
-													<label class="form-control form-control-user"
-														th:text="${perfiles.descripcion}"></label>
-												</div>
+												<h6 class="col-sm-2 m-2 mb-sm-0"><img th:src="${perfiles.urlFotoPerfil}" alt=""style="text-align:center; border-radius:50%;"></h6>
+												<h6 class="col-sm-9 m-2 mb-sm-0"><img th:src="${perfiles.urlFotoPortada}" alt="" style="text-align:center; width:100%;"></h6>
+												
 											</div>
 											<hr>
 

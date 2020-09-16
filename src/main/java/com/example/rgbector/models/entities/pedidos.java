@@ -61,6 +61,7 @@ public class pedidos implements Serializable{
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Calendar fechaPedido;
+	
 
 	public pedidos() {
 		super();
@@ -70,6 +71,7 @@ public class pedidos implements Serializable{
 		super();
 		this.idPedido = id;
 	}
+
 
 	public Long getIdPedido() {
 		return idPedido;
@@ -135,12 +137,21 @@ public class pedidos implements Serializable{
 		this.algoMas = algoMas;
 	}
 
-	public Boolean getEstado() {
+	public boolean getEstado() {
 		return estado;
 	}
+	public String getEstadoString() {
+		String est="";
+		if(estado) {
+			est="Nuevo Pedido";
+		}else {
+			est="Pedido Aceptado";
+		}
+		return est;
+	}
 
-	public void setEstado(Boolean estado) {
-		this.estado = estado;
+	public void setEstado(boolean estado) {
+			this.estado = estado;
 	}
 
 	public Calendar getFechaPedido() {
@@ -170,6 +181,46 @@ public class pedidos implements Serializable{
 	
 	/* pedidos Uno a Varios con redes */
 	
+	public List<propuestas> getPropuestas() {
+		return propuestas;
+	}
+
+	public void setPropuestas(List<propuestas> propuestas) {
+		this.propuestas = propuestas;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public tipoDisenio getTipoDisenio() {
+		return tipoDisenio;
+	}
+
+	public void setTipoDisenio(tipoDisenio tipoDisenio) {
+		this.tipoDisenio = tipoDisenio;
+	}
+
+	public List<redes> getRedes() {
+		return redes;
+	}
+
+	public void setRedes(List<redes> redes) {
+		this.redes = redes;
+	}
+
+	public List<urlsInspiracion> getUrlsInspiracion() {
+		return urlsInspiracion;
+	}
+
+	public void setUrlsInspiracion(List<urlsInspiracion> urlsInspiracion) {
+		this.urlsInspiracion = urlsInspiracion;
+	}
+
 	@OneToMany(mappedBy="pedido", fetch=FetchType.LAZY)
 	private List<redes> redes;
 	

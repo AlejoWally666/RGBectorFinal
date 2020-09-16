@@ -59,27 +59,10 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script>
+	$.getJSON('https://time2drink.com/rgbector/apis/repPedidosUsuario.php', function(data) {
+		  
 	var color = Chart.helpers.color;
-var jsonfile = {
-   "jsonarray": [{
-	      "mes": "Junio",
-	      "tipo1": 1,
-		  "tipo2":0,
-	   }, {
-      "mes": "Julio",
-      "tipo1": 2,
-	  "tipo2":0,
-   }, {
-	      "mes": "Agosto",
-	      "tipo1": 3,
-		  "tipo2":2,
-	   }, {
-		      "mes": "Septiembre",
-		      "tipo1": 1,
-			  "tipo2":4,
-		   }
-	   ]
-};
+var jsonfile = data;
 
 var labels = jsonfile.jsonarray.map(function(e) {
    return e.mes;
@@ -91,6 +74,9 @@ var data1 = jsonfile.jsonarray.map(function(e) {
 	   return e.tipo2;
 	});
 
+var data2 = jsonfile.jsonarray.map(function(e) {
+	   return e.tipo3;
+	});
 var ctx = canvas.getContext('2d');
 var config = {
    type: 'bar',
@@ -114,15 +100,20 @@ var config = {
    data: {
       labels: labels,
       datasets: [{
-         label: 'alejo',
+         label: 'easalas',
          data: data,
          backgroundColor: color(getRandomColor()).alpha(0.5).rgbString()
       },
 	  {
-         label: 'erazodavid',
+         label: 'bddavid',
          data: data1,
          backgroundColor: color(getRandomColor()).alpha(0.5).rgbString()
       },
+	  {
+          label: 'simurdiera',
+          data: data2,
+          backgroundColor: color(getRandomColor()).alpha(0.5).rgbString()
+       },
 	  ]
    }
 };
@@ -136,6 +127,7 @@ function getRandomColor() {
 	}
 
 var chart = new Chart(ctx, config);
+    });
 </script>
 	
 </body>

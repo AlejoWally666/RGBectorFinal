@@ -57,7 +57,7 @@ public class tipoDisenioController {
 	public String retrieve(@PathVariable(value = "id") Long id, Model model) {
 		tipoDisenio tipoDisenio = srvTipoDisenio.findById(id);
 		model.addAttribute("tipoDisenio", tipoDisenio);
-		return "tipoDisenio/card";
+		return "tipoDisenio/Card";
 	}
 
 	@GetMapping(value = "/update/{id}")

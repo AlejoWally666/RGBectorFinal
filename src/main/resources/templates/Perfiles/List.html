@@ -3,20 +3,20 @@
 
 <head th:replace="layout :: frgHead"></head>
 
-<body>
+<body style="background: url(/img/bg-masthead.jpg) no-repeat center center; background-size: cover;">
 	<div id="wrapper">
 	<nav th:replace="layout :: frgNav"></nav>
 
 		<div id="content-wrapper" class="d-flex flex-column">
 
-			<div id="content">
+			<div id="content" class="d-flex flex-column card o-hidden border-0 shadow-lg m-5">
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
 					<div
-						class="d-sm-flex align-items-center justify-content-between mb-4">
+						class="d-sm-flex align-items-center justify-content-around my-2">
 						<h1 th:text="${title}" class="h3 mb-0 text-gray-800"></h1>
 					</div>
 
@@ -24,22 +24,24 @@
 					<table class="table table-hover">
 						<thead>
 							<tr>
-								<th>Id</th>
-								<th>Fecha de registro</th>
-								<th>Descripci&oacute;n</th>
-								<th><a class="btn btn-sm btn-success"
+								<th>Nombre</th>
+								<th>Fecha de actualizaci&oacute;n</th>
+								<th>Imagen de Perfil</th>
+								<th>Imagen de Portada</th>
+								<th><a class="btn btn-sm btn-outline-success"
 									th:href="@{/perfiles/create}">Nuevo</a></th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="a : ${perfiles}">
-								<td th:text="${a.idperfil}"></td>
+								<td th:text="${a.usuario.nombres}"></td>
 								<td th:text="${a.fechaRegistro()}"></td>
-								<td th:text="${a.descripcion}"></td>
-								<td><a class="btn btn-sm btn-warning"
-									th:href="@{/perfiles/update/} + ${(a.idperfil)}">&nbsp;Actualizar</a>
-									<a class="btn btn-sm btn-info"
-									th:href="@{/perfiles/retrieve/} + ${(a.idperfil)}">&nbsp;Consultar</a></td>
+								<td style="text-align:center;"><img th:src="${a.urlFotoPerfil}" alt="" height=100 width=100 style="text-align:center; border-radius:50%;"></img></td>
+								<td style="text-align:center;"><img th:src="${a.urlFotoPortada}" alt="" border=3 height=100></img></td>
+								<td><a class="btn btn-xs academy-btn btn-3"
+									th:href="@{/perfiles/update/} + ${(a.idperfil)}"><i class="fas fa-eye"></i></a>
+									<a class="btn btn-xs academy-btn btn-2"
+									th:href="@{/perfiles/retrieve/} + ${(a.idperfil)}"><i class="fas fa-user-edit"></i></a></td>
 							</tr>
 						</tbody>
 					</table>

@@ -1,191 +1,139 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layout :: frgHead"></head>
-<body id="page-top">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: frgHead">
+<meta charset="ISO-8859-1">
+</head>
+<body style="background: url(/img/bg-masthead.jpg) no-repeat center center; background-size: cover;">
 
 	<div id="wrapper">
 		<ul th:replace="layout :: frgNav"></ul>
+		<div id="content-wrapper" class="d-flex flex-column">
+			<div id="content">
 
+				<div class="container-fluid">
 
-<div class="breadcumb-area bg-img"
-		th:style="'background-image:url(' + @{/img/bg-img/breadcumb.jpg} + ');'">
-		<div class="bradcumbContent">
-			<h2>Usuarios</h2>
-		</div>
-	</div>
-	<div class="top-popular-courses-area mt-100 section-padding-100-70">
-		<section class="contact-area mt-100">
-			<div class="container">
-				<div class="row">
-					<div class="col-12">
-						<div class="contact-content">
-							<div class="row">
-								<div class="col-12">
-									<div class="row">
-										<div class=col-10>
-											<span>Contenido</span>
-											<h4 th:text="${title}"></h4>
+					<!-- Page Heading -->
+					<div class="container">
+
+								<div class="row justify-content-around">
+								<div class="col-6">
+						<div class="card o-hidden border-0 shadow-lg my-5">
+							<div class="card-body p-0">
+									<div class="p-5">
+										<div class="text-center">
+											<h1 th:text="${title}" class="h4 text-gray-900 mb-4"></h1>
 										</div>
-									</div>
+										<form th:action="@{/usuario/save}" th:object="${usuario}" enctype="multipart/form-data"
+											class="user" method="post">
+											<hr>
+											<div class="form-group">
+												<div class="input-group mb-3">
+														<div class="input-group-prepend">
+															<span class="input-group-text"><i
+																class="fas fa-user"></i></span>
+														</div>
+														<input type="text" class="form-control form-control-user"
+															th:field="*{nombres}"
+															th:errorclass="'form-control is-invalid'"
+															placeholder="Nombres" required> <small
+															class="invalid-feedback"
+															th:if="${#fields.hasErrors('nombres')}"
+															th:errors="*{nombres}"></small>
+													</div>
+												<div class="input-group mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text"><i
+															class="fas fa-user-tie"></i></span>
+													</div>
+													<input type="text" class="form-control"
+														th:errorclass="'form-control is-invalid'"
+														th:field="*{nombre}" placeholder="Nick" /> <small
+														class="invalid-feedback"
+														th:if="${#fields.hasErrors('nombre')}"
+														th:errors="*{nombre}"></small>
+												</div>
+												<div class="input-group mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text"><i
+															class="fas fa-key"></i></span>
+													</div>
+													<input type="password" class="form-control"
+														th:errorclass="'form-control is-invalid'"
+														th:field="*{password}" placeholder="Password" /><small
+														class="invalid-feedback"
+														th:if="${#fields.hasErrors('password')}"
+														th:errors="*{password}"></small>
+												</div>
+												
+													
+													<div class="input-group mb-3">
+														<div class="input-group-prepend">
+															<span class="input-group-text"><i
+																class="fas fa-address-card"></i></span>
+														</div>
+														<select class="form-control"
+															th:field=*{tipoUsuario.idTipoUsuario}
+															th:errorclass="'form-control is-invalid'" required>
+															<option
+																value="1" text="Quiero un Dise&ntilde;o">Quiero un Dise&ntilde;o</option>
+																<option 
+																value="2" text="Soy Dise&ntilde;ador">Soy Dise&ntilde;ador</option>
+														</select> <small class="invalid-feedback"
+															th:if="${#fields.hasErrors('tipoUsuario')}"
+															th:errors="*{tipoUsuario}"></small>
+													</div>
 
-									<!-- ##### Tabs ##### -->
-									<div class="col-12">
-										<div class="academy-tabs-content">
-											<ul class="nav nav-tabs" id="myTab" role="tablist">
-												<li class="nav-item"><a class="nav-link active"
-													id="tab--1" data-toggle="tab" href="#tab1" role="tab"
-													aria-controls="tab1" aria-selected="false">Datos
-														generales</a></li>
-												<li class="nav-item"><a class="nav-link" id="tab--2"
-													data-toggle="tab" href="#tab2" role="tab"
-													aria-controls="tab2" aria-selected="false">Tipo de diseño</a>
-												</li>
-											</ul>
+													<div class="input-group mb-3">
+														<div class="input-group-prepend">
+															<span class="input-group-text"><i
+																class="fas fa-mobile-alt"></i></span>
+														</div>
+														<input type="text" class="form-control form-control-user"
+															th:field="*{telefono}"
+															th:errorclass="'form-control is-invalid'"
+															placeholder="Tel&eacute;fono"> <small
+															class="invalid-feedback"
+															th:if="${#fields.hasErrors('telefono')}"
+															th:errors="*{telefono}"></small>
+													</div>
+													<div class="input-group mb-3">
+														<div class="input-group-prepend">
+															<span class="input-group-text"><i
+																class="fas fa-at"></i></span>
+														</div>
+														<input type="email" class="form-control form-control-user"
+															th:field="*{correo}"
+															th:errorclass="'form-control is-invalid'"
+															placeholder="Correo" required> <small
+															class="invalid-feedback"
+															th:if="${#fields.hasErrors('correo')}"
+															th:errors="*{correo}"></small>
+													</div>
+												
+												
 
-											<div class="tab-content mb-100" id="myTabContent">
-												<div class="tab-pane fade show active" id="tab1"
-													role="tabpanel" aria-labelledby="tab--1">
-													<div class="academy-tab-content">
-														<!-- Tab Text -->
-														<div class="academy-tab-text">
-															<div class="contact-form-area wow fadeInUp"
-																data-wow-delay="500ms">
-																<form th:object="${usuario}" method="post">
-																	<div class="row d-flex align-items-center">
-																		<div class="col-1">
-																			<i class="far fa-address-card fa-2x"></i>
-																		</div>
-																		<div class="col-5">
-																			<input type="text" class="form-control"
-																				th:field="*{idusuario}" readonly />
-																		</div>
-																		<div class="col-1">
-																			<i class="far fa-address-book fa-2x"></i>
-																		</div>
-																		<div class="col-5">
-																			<input type="text" class="form-control"
-																				th:field="*{nombre}" readonly />
-																		</div>
-																	</div>
-																	<div class="row d-flex align-items-center">
-																		<div class="col-1">
-																			<i class="fas fa-user-tie fa-2x"></i>
-																		</div>
-																		<div class="col-5">
-																			<input type="text" class="form-control"
-																				th:field="*{habilitado}" readonly />
-																		</div>
-																		<div class="col-1">
-																			<i class="fas fa-user-tie fa-2x"></i>
-																		</div>
-																		<div class="col-5">
-																			<input type="text" class="form-control"
-																				th:field="*{nombres}" readonly />
-																		</div>
-																	</div>
-																	<div class="row d-flex align-items-center">
-																		<div class="col-1">
-																			<i class="fas fa-phone fa-2x"></i>
-																		</div>
-																		<div class="col-5">
-																			<input type="text" class="form-control"
-																				th:field="*{telefono}" readonly />
-																		</div>
-																		<div class="col-1">
-																			<i class="fas fa-at fa-2x"></i>
-																		</div>
-																		<div class="col-5">
-																			<input type="text" class="form-control"
-																				th:field="*{correo}" readonly />
-																		</div>
-																	</div>
-																	<input type="hidden" th:field="*{idusuario}" />
-																</form>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div class="tab-pane fade" id="tab2" role="tabpanel"
-													aria-labelledby="tab--2">
-													<div class="academy-tab-content">
-														<button id="btnAdd" class="btn btn-sm academy-btn btn-3" data-toggle="modal" data-target="#modalPedidos">
-																<i class="fas fa-plus-circle"></i>&nbsp;Nuevo</button>
-														<!-- Tab Text -->
-														<div class="academy-tab-text" id="listPedidos">
-															<table class="table table-hover">
-															<thead class="bg-ligth">
-																<tr>
-																	<th>Nombre proyecto</th>
-																	<th>Web inspiracion</th>
-																	<th>Plazo</th>
-																	<th>Presupuesto</th>
-																	<th>Donde usara</th>
-																	<th>Algo mas</th>
-																	<th>Fecha pedido</th>
-																	<th>Descripcion</th>
-																	<th><a class="btn btn-sm academy-btn btn-3"><i class="fas fa-plus-circle"></i>&nbsp;Nuevo</a></th>
-																
-																</tr>
-															</thead>
-															
-															</table>
-														</div>
-													</div>
-												</div>
-												<div class="tab-pane fade" id="tab3" role="tabpanel"
-													aria-labelledby="tab--3">
-													<div class="academy-tab-content">
-														<!-- Tab Text -->
-														<div class="academy-tab-text">
-															<p>Integer nec bibendum lacus. Praesent malesuada
-																congue, Suspendisse dictum enim sit amet libero malesu
-																ada feugiat. Praesent malesuada congue magna at finibus.
-																In hac habitasse platea dictumst. Curabitur rhoncus
-																auctor eleifend. Praesent malesuada congue.</p>
-														</div>
-													</div>
-												</div>
+												
+
 											</div>
-										</div>
+											
+											<div class="col-12 justify-content-around">
+													<button type="submit" class="col-12 btn btn-primary">
+														<i class="fas fa-user-check"></i><strong> &nbsp;Aceptar</strong>
+													</button>
+													</div>	
+											<input type="hidden" th:field="*{idusuario}">
+										</form>
 									</div>
-								</div>
+								
 							</div>
 						</div>
 					</div>
+								</div>
+					</div>
 				</div>
 			</div>
-		</section>
-	</div>
-		
-		<div class="modal fade" id="modalPedidos" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Agregar nuevo pedido</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div id="contentPedidos"
-					class="modal-body contact-area contact-content-modal"></div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-sm academy-btn btn-3">Guardar</button>
-					<button type="button" class="btn btn-sm academy-btn btn-2"
-						data-dismiss="modal">Cancelar</button>
-				</div>
-			</div>
-		</div>
-	</div>
-											
-
 			<footer th:replace="layout :: frgFooter"></footer>
-<div th:replace="layout :: frgScripts"></div>
-<script th:src="@{/js/usuario/card-usuario.js}"></script>
 		</div>
-
-
-
+	</div>
 </body>
 </html>

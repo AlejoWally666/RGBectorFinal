@@ -3,13 +3,13 @@
 
 <head th:replace="layout :: frgHead"></head>
 
-<body>
+<body  style="background: url(/img/bg-masthead.jpg) no-repeat center center; background-size: cover;">
 	<div id="wrapper">
 	<nav th:replace="layout :: frgNav"></nav>
 
-		<div id="content-wrapper" class="d-flex flex-column">
+		<div id="content-wrapper">
 
-			<div id="content">
+			<div id="content"  class="d-flex flex-column card o-hidden border-0 shadow-lg m-5">
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
@@ -18,7 +18,7 @@
 					<div
 						class="row d-sm-flex align-items-center justify-content-around mb-4 mt-5">
 						<h1 th:text="${title}" class="h3 mb-0 text-gray-800"></h1>
-						<a class="btn btn-sm btn-success"
+						<a class="btn btn-sm btn-outline-primary"
 									th:href="@{/pedidos/reporteTipoDisenio}">Ver Reporte</a>
 					</div>
 
@@ -28,20 +28,22 @@
 							<tr>
 								<th>Tipo de Dise&ntilde;o</th>
 								<th>Descripcion</th>
+								<th>Imagen</th>
 								<th>Precio aconsejado</th>
-								<th><a class="btn btn-sm btn-success"
-									th:href="@{/tipoDisenio/create}">Nuevo</a></th>
+								<th><a class="btn btn-sm btn-outline-success"
+									th:href="@{/tipoDisenio/create}">+ Nuevo</a></th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="a : ${tipoDisenio}">
 								<td th:text="${a.nombre}"></td>
-								<td th:text="${a.descripcion}"></td>
+								<td th:text="${a.descripcion}" style="width:30%; text-align:justify;"></td>
+								<td style="text-align:center;"><img th:src="${a.imagen}" alt="" border=3 height=100 width=100></img></td>
 								<td th:text="${a.precioAconsejado}"></td>
-								<td><a class="btn btn-sm btn-warning"
-									th:href="@{/tipoDisenio/update/} + ${(a.idTipoDisenio)}">&nbsp;Actualizar</a>
-									<a class="btn btn-sm btn-info"
-									th:href="@{/tipoDisenio/retrieve/} + ${(a.idTipoDisenio)}">&nbsp;Consultar</a></td>
+								<td>
+								<a class="btn btn-xs academy-btn btn-3"	th:href="@{/tipoDisenio/retrieve/} + ${(a.idTipoDisenio)}"><i class="fas fa-eye"></i></a>
+									<a class="btn btn-xs academy-btn btn-2"	th:href="@{/tipoDisenio/update/} + ${(a.idTipoDisenio)}"><i class="fas fa-user-edit"></i></a>
+								</td>
 							</tr>
 						</tbody>
 					</table>

@@ -103,4 +103,13 @@ public class perfiles implements Serializable{
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy");
 		return sdf.format(fechaRegistro.getTime());
 	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	
 }

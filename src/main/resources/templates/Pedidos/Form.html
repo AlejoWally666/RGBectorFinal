@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout :: frgHead"></head>
-<body id="page-top">
+<body id="page-top" style="background: url(/img/bg-masthead.jpg) no-repeat center center; background-size: cover;">
 
 	<div id="wrapper">
 		<ul th:replace="layout :: frgNav"></ul>
@@ -60,23 +60,46 @@
 													</div>
 												</div>
 												<div class="form-group row">
-													<div class="col-sm-6 mb-3 mb-sm-0">
-														<label class="radio-inline"><input type="radio"
-															th:field="*{estado}" value="1" />&nbsp;Activo</label>
-													</div>
-													<div class="col-sm-6 mb-3 mb-sm-0">
-														<input type="date" class="form-control form-control-user"
-															th:field="*{fechaPedido}" placeholder="Fecha de pedido">
-													</div>
-													<div class="col-sm-7">
-														<label class="radio-inline"><input type="radio"
-															th:field="*{estado}" value="0" />&nbsp;Inactivo</label>
+													<div class="col-sm-12 mb-3 mb-sm-0">
+														<textarea rows=2 type="text" class="form-control form-control-user"
+															th:field="*{descripcion}" placeholder="Descripci&oacute;n"></textarea>
 													</div>
 												</div>
-												<div class="form-group row">
-													<div class="col-sm-12 mb-3 mb-sm-0">
-														<input type="text" class="form-control form-control-user"
-															th:field="*{descripcion}" placeholder="Descripci&oacute;n">
+												<div class="input-group mb-3">
+														<div class="input-group-prepend">
+															<span class="input-group-text"><i
+																class="fas fa-address-card"></i></span>
+														</div>
+														<select class="form-control"
+															th:field=*{tipoDisenio.idTipoDisenio}
+															th:errorclass="'form-control is-invalid'" required>
+															<option value="">--Seleccione Tipo de Usuario--</option>
+															<option th:each="us : ${tipoDisenio}"
+																th:value="${us.idTipoDisenio}" th:text="${us.nombre}"></option>
+														</select> <small class="invalid-feedback"
+															th:if="${#fields.hasErrors('tipoDisenio')}"
+															th:errors="*{tipoDisenio}"></small>
+													</div>
+													<div class="input-group mb-3">
+														<div class="input-group-prepend">
+															<span class="input-group-text"><i
+																class="fas fa-address-card"></i></span>
+														</div>
+														<select class="form-control"
+															th:field=*{usuario.idusuario}
+															th:errorclass="'form-control is-invalid'" required>
+															<option value="">--Seleccione el Usuario que solicita el Dise&ntilde;o--</option>
+															<option th:each="us : ${usuarios}"
+																th:value="${us.nombres}" th:text="${us.nombres}"></option>
+														</select> <small class="invalid-feedback"
+															th:if="${#fields.hasErrors('usuario')}"
+															th:errors="*{usuario}"></small>
+													</div>
+													
+													<div class="form-group row">
+													<div class="col-sm-6 mb-3 mb-sm-0">
+														<input type="date" class="form-control form-control-user"
+															th:field="*{fechaPedido}" placeholder="Fecha de Pedido">
 													</div>
 												</div>
 												<hr> 	
@@ -91,6 +114,7 @@
 													</div>		
 												</div>
 												<input type="hidden" th:field="*{idPedido}">
+												
 											</form>
 										</div>
 									</div>

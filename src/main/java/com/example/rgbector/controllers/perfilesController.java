@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.rgbector.models.entities.Usuario;
 import com.example.rgbector.models.entities.perfiles;
 import com.example.rgbector.models.services.IPerfilesService;
+import com.example.rgbector.models.services.UsuarioService;
 
 @Controller
 @RequestMapping(value = "/perfiles")
@@ -23,6 +25,8 @@ public class perfilesController {
 	@Autowired
 	private IPerfilesService srvPerfiles;
 
+	@Autowired
+	private UsuarioService service;
 	// Cada metodo en el controlador gestiona una peticion al backend
 	// a traves de una URL (Puede ser -> 1. Escrita en el navegador,
 	// 2. Puede ser Hyperlink, 3. Puede ser un action de un Form)
@@ -39,6 +43,9 @@ public class perfilesController {
 	public String retrieve(@PathVariable(value = "id") Long id, Model model) {
 		perfiles perfiles = srvPerfiles.findById(id);
 		model.addAttribute("perfiles", perfiles);
+		List<Usuario> usuarios = service.findAll();
+		model.addAttribute("usuarios", usuarios);
+		model.addAttribute("title", perfiles.getUsuario().getNombres());
 		return "perfiles/card";
 	}
 
@@ -46,7 +53,7 @@ public class perfilesController {
 	public String update(@PathVariable(value = "id") Long id, Model model) {
 		perfiles perfiles = srvPerfiles.findById(id);
 		model.addAttribute("perfiles", perfiles);
-		model.addAttribute("title", "Actualizando el registro " + perfiles.getIdperfil());
+		model.addAttribute("title", "Actualizando el registro " + perfiles.getUsuario().getNombres());
 		return "perfiles/form";
 	}
 
@@ -60,6 +67,8 @@ public class perfilesController {
 	public String list(Model model) {
 		List<perfiles> perfiles = srvPerfiles.findAll();
 		model.addAttribute("perfiles", perfiles);
+		List<Usuario> usuarios = service.findAll();
+		model.addAttribute("usuarios", usuarios);
 		model.addAttribute("title", "Listado de perfiles");
 		return "perfiles/list";
 	}

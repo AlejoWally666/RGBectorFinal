@@ -71,7 +71,7 @@ public class UsuarioController {
 	@GetMapping(value="/retrieve/{id}")
 	public String retrieve(@PathVariable(value="id") Integer id, Model model) {
 		Usuario usuario = service.findByidusuario(id);
-		model.addAttribute("title", usuario.toString());
+		model.addAttribute("title", usuario.getNombre());
 		model.addAttribute("usuario", usuario);	
 		return "usuario/card";
 	}
@@ -80,10 +80,10 @@ public class UsuarioController {
 	public String update(@PathVariable(value="id") Integer id, Model model) {
 		Usuario usuario = service.findByidusuario(id);
 		model.addAttribute("usuario", usuario);
-		model.addAttribute("title", "Actualizando el registro de " + usuario);
+		model.addAttribute("title", "Actualizando el registro de " + usuario.getNombre());
 		List<tipoUsuario> tipoUsuario = (List<com.example.rgbector.models.entities.tipoUsuario>) srvtipoUsuario.findAll();
 		model.addAttribute("tipoUsuario",tipoUsuario);
-		return "usuario/form";
+		return "usuario/card";
 	}
 	
 	@GetMapping(value="/delete/{id}")
@@ -102,10 +102,7 @@ public class UsuarioController {
 	
 	@GetMapping(value="/reporte")
 	public String report(Model model) {
-		List<Usuario> usuarios = service.findAll();
-		model.addAttribute("usuarios", usuarios);
 		model.addAttribute("title", "Reporte de usuarios");
 		return "usuario/report";
 	}
-
 }
